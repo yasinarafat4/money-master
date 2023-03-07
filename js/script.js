@@ -4,6 +4,7 @@ const calculateExpense = () => {
   const rent = document.querySelector("#rent").value;
   const clothes = document.querySelectorAll("#clothes")[0].value;
 
+  //   validate positive number
   if (
     income < 0 ||
     income == "" ||
@@ -17,13 +18,31 @@ const calculateExpense = () => {
     alert("Inputs must be positive numbers");
     return;
   }
+  //  validate if provide NaN
+  if (isNaN(income)) {
+    alert("Provide a valid number");
+    return;
+  }
+  if (isNaN(food)) {
+    alert("Provide a valid number");
+    return;
+  }
+  if (isNaN(rent)) {
+    alert("Provide a valid number");
+    return;
+  }
+  if (isNaN(clothes)) {
+    alert("Provide a valid number");
+    return;
+  }
+
   // calculate expense
   const expense = parseInt(food) + parseInt(rent) + parseInt(clothes);
 
   // calculate balance
   const balance = parseInt(income) - expense;
   //   validate income
-  if (expense > income.value) {
+  if (expense > income) {
     alert("Expenses cannot be more than income");
   } else {
     // view total expense and balance
@@ -39,6 +58,7 @@ const calculateSavings = () => {
   //   Validate saving percentage value
   if (savePercentage < 0) {
     alert("Provide positive saving value");
+    return;
   }
   const savingAmount = (savePercentage / 100) * income;
 
